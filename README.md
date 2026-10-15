@@ -204,6 +204,36 @@ Bedroom count showed a clear positive relationship with median nightly price, wh
 
 These findings support the use of segmented pricing benchmarks rather than relying on a single market-wide figure. They are descriptive associations and should not be interpreted as causal estimates or predictions of future rental performance.
 
+## Additional Exploratory Analysis
+
+Beyond the interactive Tableau dashboard, Python and R were used to investigate price distributions, relative variability, and differences across listing characteristics. These visualizations provide additional statistical context for the primary market findings.
+
+### Nightly Price Distributions by Bedroom Count (Python)
+
+<img src="outputs/bedroom_price_distribution_scatter_plot.png" alt="Nightly price distributions by bedroom count" width="850">
+
+Box plots illustrate how nightly price distributions differ across one-, two-, and three-bedroom comparable listings. In addition to higher median prices for larger properties, the plots highlight differences in price dispersion and the presence of unusually high-priced listings within each bedroom category.
+
+### Relative Price Variability by Bedroom Count (Python)
+
+<img src="outputs/bedroom_count_price_cv_pct.png" alt="Coefficient of variation of nightly prices by bedroom count" width="850">
+
+The coefficient of variation measures price dispersion relative to the mean. One-bedroom listings had a coefficient of variation of **36.66%**, compared with **35.67%** for two-bedroom listings and **27.88%** for three-bedroom listings. These results suggest that three-bedroom listings exhibited less relative price variability within the comparable-listing subset.
+
+### Nightly Price Distributions by Host Scale (R)
+
+<img src="outputs/r_host_scale_price_distribution.png" alt="Nightly price distributions by host scale" width="850">
+
+Violin plots compare nightly price distributions across host categories, from single-listing hosts to large or professional operators. The distributions illustrate differences in typical prices, overall dispersion, and the extent of overlap between host groups.
+
+### Neighborhood Nightly Price Ranges (R)
+
+<img src="outputs/r_neighborhood_price_ranges.png" alt="Nightly price ranges across Denver neighborhoods" width="850">
+
+This visualization compares price ranges and median nightly prices across the ten neighborhoods with the highest comparable-listing counts. It demonstrates that neighborhoods with similar median prices may exhibit substantially different price ranges, emphasizing the importance of examining variability alongside central tendency.
+
+These findings are descriptive and should not be interpreted as evidence that bedroom count, host scale, or neighborhood independently causes differences in nightly prices. The underlying Python notebooks, R scripts, and additional visualizations are available in the repository.
+
 ## Methodology and Limitations
 
 ### Analytical Methodology
