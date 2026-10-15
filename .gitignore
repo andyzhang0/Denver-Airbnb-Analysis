@@ -1,0 +1,32 @@
+# macOS system files
+.DS_Store
+
+# Python cache and local environments
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+
+# Raw source data and local database
+/data/*.csv
+/data/*.geojson
+/data/*.duckdb
+/data/*.duckdb.wal
+
+# Large cleaned datasets
+/outputs/cleaned_listings.csv
+/outputs/cleaned_calendar.csv
+/outputs/cleaned_reviews.csv
+
+# Tableau intermediate files and archives
+/tableau/archive/
+/tableau/extracts/
+*.twbr
+*.twbr.*
+*.hyper
+
+# Temporary files
+*.tmp
+*.log

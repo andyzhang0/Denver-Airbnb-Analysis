@@ -1,0 +1,13 @@
+host_scale,bedrooms,listing_count,mean_review_count,median_review_count
+Large/professional operator,1,102,51.31372549019608,31
+Large/professional operator,2,48,77.75,49.5
+Large/professional operator,3,34,44.205882352941174,22
+Medium operator,1,28,187.28571428571428,181
+Medium operator,2,34,160.91176470588235,146
+Medium operator,3,12,115.25,56.5
+Single-listing host,1,492,158.14634146341464,100.5
+Single-listing host,2,378,116.08730158730158,69
+Single-listing host,3,189,83.43915343915344,59
+Small multi-listing host,1,84,145.95238095238096,78
+Small multi-listing host,2,97,109.78350515463917,49
+Small multi-listing host,3,47,72.59574468085107,64
