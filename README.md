@@ -1,21 +1,49 @@
 # Denver Airbnb Market Analysis
 
-## Project Overview
+**Tools:** SQL (DuckDB) | Python | R | Google Sheets | Tableau
 
-This project analyzes Denver's Airbnb short-term rental market to identify pricing patterns, neighborhood differences, and relationships between listing characteristics and nightly prices.
+An end-to-end analysis of Denver's Airbnb short-term rental market, examining pricing patterns across bedroom counts, neighborhoods, host characteristics, and property attributes.
 
-The analysis follows an end-to-end data analytics workflow, incorporating data preparation, exploratory analysis, statistical summaries, data visualization, and business reporting.
+### Explore the Project
 
-The project uses SQL, Python, R, Google Sheets, and Tableau to investigate the market from multiple perspectives and communicate findings through a published interactive dashboard.
+- **[Interactive Tableau Dashboard](https://public.tableau.com/views/DenverAirbnbMarketOverview/DenverAirbnb-MarketOverview)** — Explore the key pricing findings through interactive visualizations.
+- **[Google Sheets Analysis](https://docs.google.com/spreadsheets/d/1LTeZ-GVYqrYQ_D5Po2h-DqC42cFs5VMRm8Y553t6OLs/edit?usp=sharing)** — Review spreadsheet analysis, pivot tables, formulas, and charts.
+- **[SQL Analysis](sql/02_eda_analysis.sql)** — Examine SQL queries used to investigate market patterns.
+- **[Python Analysis](notebooks/02_denver_airbnb_analysis.ipynb)** — Explore Python-based data preparation, validation, and analysis.
 
-To improve comparability across properties, the primary pricing analysis focuses on a subset of listings that meet the following criteria:
+### Dashboard Preview
 
-- Entire homes or apartments
-- 1–3 bedrooms
-- Short-stay rental policies
-- Nightly prices within the defined typical price range
+<img src="images/denver_airbnb_dashboard.png"
+     alt="Denver Airbnb Market Overview Dashboard"
+     width="850">
 
-This comparable-listing subset contains **1,545 listings**, with a median nightly price of **$261.33**.
+*Interactive dashboard exploring nightly prices across bedroom counts, neighborhoods, and host categories. [View the full dashboard on Tableau Public](https://public.tableau.com/views/DenverAirbnbMarketOverview/DenverAirbnb-MarketOverview).*
+
+### Project at a Glance
+
+| Metric | Value |
+|---|---:|
+| Total Airbnb listings | 4,939 |
+| Calendar records | 1,802,735 |
+| Guest reviews | 354,646 |
+| Comparable listings | 1,545 |
+| Median nightly price (comparable listings) | $261.33 |
+
+### Key Findings at a Glance
+
+- **Bedroom count:** Median nightly prices increased from $207.75 for one-bedroom listings to $389.42 for three-bedroom listings, approximately 87.4% higher.
+- **Neighborhood differences:** Union Station had the highest median nightly price ($376.21) among the 10 most represented neighborhoods.
+- **Host characteristics:** Large/professional operators had a median nightly price of $318.00, compared with $250.50 for single-listing hosts.
+
+### Project Overview
+
+This project investigates how Airbnb nightly prices vary across Denver's short-term rental market and identifies listing characteristics associated with higher or lower advertised prices.
+
+The analysis follows an end-to-end workflow encompassing data acquisition, profiling, cleaning, exploratory analysis, statistical summaries, spreadsheet analysis, and interactive visualization.
+
+To improve comparability, the primary pricing analysis focuses on **1,545 entire-home or apartment listings** with 1–3 bedrooms, short-stay policies, and nightly prices within the defined typical price range.
+
+The findings provide descriptive market insights that can support competitive pricing research, neighborhood comparisons, and short-term rental market evaluation.
 
 ## Business Objectives
 
@@ -188,6 +216,26 @@ A comparable-listing subset was defined to support more consistent comparisons a
 
 The analysis is exploratory and descriptive rather than causal or predictive.
 
+### Comparable-Listing Selection and Price Outlier Treatment
+
+The primary pricing analysis focuses on a comparable subset of **1,545 Airbnb listings** selected using four criteria:
+
+- **Property type:** Entire homes or apartments (`room_type = 'Entire home/apt'`).
+- **Bedroom count:** Properties with 1–3 bedrooms, inclusive.
+- **Stay policy:** Short-stay listings requiring a minimum stay of six nights or fewer (`minimum_nights <= 6`).
+- **Price classification:** Listings with valid nightly prices classified as `Typical range`.
+
+To classify nightly prices, the cleaning process first converted currency-formatted price strings into numeric values. The interquartile range (IQR) method was then applied separately to each room type.
+
+The IQR was calculated as `Q3 - Q1`, with outlier boundaries defined as:
+
+- **Lower bound:** `Q1 - 1.5 × IQR`
+- **Upper bound:** `Q3 + 1.5 × IQR`
+
+Listings with nightly prices outside these boundaries were classified as price outliers. Listings within the boundaries were classified as `Typical range`.
+
+These filters improve the comparability of descriptive pricing benchmarks but do not control for every difference in property location, quality, amenities, or guest capacity.
+
 ### Limitations
 
 **1. Advertised Prices vs. Actual Revenue**
@@ -295,6 +343,18 @@ The repository retains the analytical code, documented methodology, summary tabl
 
 The SQL, Python, and R files document the transformations and analyses performed using the source datasets. Reproducing the complete workflow requires obtaining the corresponding source data and configuring the local environment.
 
+### Getting Started
+
+To explore the project:
+
+1. Clone the repository using `git clone https://github.com/andyzhang0/Denver-Airbnb-Analysis.git`.
+2. Review `README.md` and `SQL_EDA_Findings.md` for the analytical objectives, methodology, and findings.
+3. Explore the SQL scripts in `sql/`, Python notebooks in `notebooks/`, and R analysis in `r/`.
+4. Install the Python dependencies listed in `requirements.txt` if running the local notebooks.
+5. Obtain the corresponding source datasets and configure the local DuckDB environment before attempting to reproduce the full data preparation and analysis workflow.
+
+The published Tableau dashboard and linked Google Sheets workbook can be explored independently without running the local analysis code.
+
 ### Navigating the Project
 
 - **Datalab Workbooks:** Original exploratory notebooks covering data profiling, analytical preparation, and SQL exploratory analysis, including supporting images.
@@ -302,7 +362,7 @@ The SQL, Python, and R files document the transformations and analyses performed
 - **sql:** SQL scripts used for data cleaning and exploratory analysis.
 - **r:** Statistical analysis and visualization code.
 - **outputs:** Analytical summary tables and exported visualizations.
-- **sheets:** Excel workbook and exported spreadsheet charts.
+- **sheets:** Spreadsheet-based market analysis using formulas, pivot tables, and charts. The repository includes an exported Excel workbook and chart images. The original analysis is also available in [Google Sheets](https://docs.google.com/spreadsheets/d/1LTeZ-GVYqrYQ_D5Po2h-DqC42cFs5VMRm8Y553t6OLs/edit?usp=sharing).
 - **tableau:** Final Tableau packaged workbook, with the published dashboard accessible through Tableau Public.
 - **SQL_EDA_Findings.md:** Supporting documentation of SQL exploratory analysis findings.
 
