@@ -6,7 +6,7 @@ An end-to-end analysis of Denver's Airbnb short-term rental market, examining pr
 
 ### Explore the Project
 
-- **[Interactive Tableau Dashboard](https://public.tableau.com/views/DenverAirbnbMarketOverview/DenverAirbnb-MarketOverview)** — Explore the key pricing findings through interactive visualizations.
+- **[Interactive Tableau Dashboards](https://public.tableau.com/views/DenverAirbnbMarketAnalysisInteractiveDashboards/DenverAirbnbMarketOverview)** — Explore market pricing, neighborhood comparisons, and historical review activity across three interactive dashboards.
 - **[Google Sheets Analysis](https://docs.google.com/spreadsheets/d/1LTeZ-GVYqrYQ_D5Po2h-DqC42cFs5VMRm8Y553t6OLs/edit?usp=sharing)** — Review spreadsheet analysis, pivot tables, formulas, and charts.
 - **[SQL Analysis](sql/02_eda_analysis.sql)** — Examine SQL queries used to investigate market patterns.
 - **[Python Analysis](notebooks/02_denver_airbnb_analysis.ipynb)** — Explore Python-based data preparation, validation, and analysis.
@@ -17,7 +17,7 @@ An end-to-end analysis of Denver's Airbnb short-term rental market, examining pr
      alt="Denver Airbnb Market Overview Dashboard"
      width="850">
 
-*Interactive dashboard exploring nightly prices across bedroom counts, neighborhoods, and host categories. [View the full dashboard on Tableau Public](https://public.tableau.com/views/DenverAirbnbMarketOverview/DenverAirbnb-MarketOverview).*
+*Market Overview preview showing nightly prices across bedroom counts, neighborhoods, and host categories. [View the full dashboard on Tableau Public](https://public.tableau.com/views/DenverAirbnbMarketAnalysisInteractiveDashboards/DenverAirbnbMarketOverview).*
 
 ### Project at a Glance
 
@@ -117,7 +117,7 @@ The project followed a structured sequence:
 6. **Python Analysis:** Perform programmatic profiling, cleaning, and validation.
 7. **R Analysis:** Generate statistical summaries and exploratory visualizations.
 8. **Spreadsheet Analysis:** Apply formulas, pivot tables, and charting techniques.
-9. **Tableau Visualization:** Develop and publish a market overview dashboard.
+9. **Tableau Visualization:** Develop and publish three interactive dashboards covering market characteristics, pricing, and historical guest review activity.
 10. **Project Documentation:** Consolidate methodology, findings, limitations, and deliverables for portfolio presentation.
 
 ## Key Findings and Business Insights
@@ -206,29 +206,29 @@ These findings support the use of segmented pricing benchmarks rather than relyi
 
 ## Additional Exploratory Analysis
 
-Beyond the interactive Tableau dashboard, Python and R were used to investigate price distributions, relative variability, and differences across listing characteristics. These visualizations provide additional statistical context for the primary market findings.
+Beyond the interactive Tableau dashboards, Python and R were used to investigate price distributions, relative variability, and differences across listing characteristics. These visualizations provide additional statistical context for the primary market findings.
 
 ### Nightly Price Distributions by Bedroom Count (Python)
 
-<img src="outputs/bedroom_price_distribution_scatter_plot.png" alt="Nightly price distributions by bedroom count" width="850">
+<img src="outputs/charts/bedroom_price_distribution_scatter_plot.png" alt="Nightly price distributions by bedroom count" width="850">
 
 Box plots illustrate how nightly price distributions differ across one-, two-, and three-bedroom comparable listings. In addition to higher median prices for larger properties, the plots highlight differences in price dispersion and the presence of unusually high-priced listings within each bedroom category.
 
 ### Relative Price Variability by Bedroom Count (Python)
 
-<img src="outputs/bedroom_count_price_cv_pct.png" alt="Coefficient of variation of nightly prices by bedroom count" width="850">
+<img src="outputs/charts/bedroom_count_price_cv_pct.png" alt="Coefficient of variation of nightly prices by bedroom count" width="850">
 
 The coefficient of variation measures price dispersion relative to the mean. One-bedroom listings had a coefficient of variation of **36.66%**, compared with **35.67%** for two-bedroom listings and **27.88%** for three-bedroom listings. These results suggest that three-bedroom listings exhibited less relative price variability within the comparable-listing subset.
 
 ### Nightly Price Distributions by Host Scale (R)
 
-<img src="outputs/r_host_scale_price_distribution.png" alt="Nightly price distributions by host scale" width="850">
+<img src="outputs/charts/r_host_scale_price_distribution.png" alt="Nightly price distributions by host scale" width="850">
 
 Violin plots compare nightly price distributions across host categories, from single-listing hosts to large or professional operators. The distributions illustrate differences in typical prices, overall dispersion, and the extent of overlap between host groups.
 
 ### Neighborhood Nightly Price Ranges (R)
 
-<img src="outputs/r_neighborhood_price_ranges.png" alt="Nightly price ranges across Denver neighborhoods" width="850">
+<img src="outputs/charts/r_neighborhood_price_ranges.png" alt="Nightly price ranges across Denver neighborhoods" width="850">
 
 This visualization compares price ranges and median nightly prices across the ten neighborhoods with the highest comparable-listing counts. It demonstrates that neighborhoods with similar median prices may exhibit substantially different price ranges, emphasizing the importance of examining variability alongside central tendency.
 
@@ -302,21 +302,17 @@ Differences across bedrooms, neighborhoods, and host categories may reflect addi
 
 The analysis represents the market conditions captured by the source data. Findings should not be assumed to reflect current market conditions without obtaining updated listings and calendar data.
 
-## Tableau Dashboard
+## Interactive Tableau Dashboards
 
-The project includes a published Tableau dashboard titled **Denver Airbnb | Market Overview**.
+The published Tableau Public workbook, **Denver Airbnb Market Analysis | Interactive Dashboards**, contains three dashboards designed for complementary analytical questions:
 
-The dashboard presents:
+1. **Denver Airbnb | Market Overview:** Summarizes the comparable-listing market with median nightly price, listing counts, a neighborhood price map, the 10 most represented neighborhoods, bedroom-level comparisons, and host-scale pricing.
+2. **Denver Airbnb | Pricing Explorer:** Provides bedroom-level nightly price distributions, an interactive neighborhood ranking that switches between median nightly price and comparable listing count, a selectable Top N control, a listing-location map, and a neighborhood-by-bedroom pricing heatmap.
+3. **Denver Airbnb | Guest Activity Explorer:** Examines monthly review counts and seasonal patterns from 2019–2025, along with neighborhood, host-scale, and property-category comparisons. Year, month, host-scale, and property-category filters support exploration.
 
-- Median nightly price for comparable listings
-- Total number of comparable listings
-- Median nightly price by bedroom count
-- Median nightly price across the 10 most represented neighborhoods
-- Median nightly price by host scale
+The primary pricing views use the defined comparable-listing population. **Guest reviews are treated as a proxy for guest activity, not verified bookings or occupancy.** The review dashboard's March 2020 reference line provides context for the COVID-19 disruption.
 
-The dashboard uses the same comparable-listing criteria as the primary pricing analysis.
-
-**View the interactive dashboard:** [Denver Airbnb | Market Overview](https://public.tableau.com/views/DenverAirbnbMarketOverview/DenverAirbnb-MarketOverview?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+**[Explore all three interactive dashboards on Tableau Public](https://public.tableau.com/views/DenverAirbnbMarketAnalysisInteractiveDashboards/DenverAirbnbMarketOverview)**
 
 ## Repository Structure
 
@@ -339,11 +335,8 @@ Denver-Airbnb-Analysis/
 │   └── 02_denver_airbnb_analysis.ipynb
 │
 ├── outputs/
-│   ├── r_bedroom_summary.csv
-│   ├── r_neighborhood_summary.csv
-│   ├── r_host_summary.csv
-│   ├── r_host_review_summary.csv
-│   └── (Python and R visualization PNGs)
+│   ├── charts/                  # Python and R exported visualizations
+│   └── tables/                  # Small R summary CSVs; cleaned exports excluded
 │
 ├── r/
 │   └── 01_denver_airbnb_analysis.R
@@ -357,7 +350,7 @@ Denver-Airbnb-Analysis/
 │   └── 02_eda_analysis.sql
 │
 ├── tableau/
-│   └── denver_airbnb_dashboard.twbx
+│   └── completed_denver_airbnb_dashboard.twbx
 │
 ├── .gitignore
 ├── README.md
@@ -367,7 +360,7 @@ Denver-Airbnb-Analysis/
 
 ### Data Availability
 
-The original Airbnb datasets, local DuckDB database, and large cleaned CSV exports are excluded from the GitHub repository to avoid unnecessary storage and file-size limitations.
+The original Airbnb datasets, local DuckDB database, and generated cleaned CSV exports are excluded from the GitHub repository to avoid unnecessary storage and file-size limitations. The original Tableau development workbook is also retained locally rather than tracked in the public repository.
 
 The repository retains the analytical code, documented methodology, summary tables, visualizations, and final reporting deliverables.
 
@@ -383,7 +376,7 @@ To explore the project:
 4. Install the Python dependencies listed in `requirements.txt` if running the local notebooks.
 5. Obtain the corresponding source datasets and configure the local DuckDB environment before attempting to reproduce the full data preparation and analysis workflow.
 
-The published Tableau dashboard and linked Google Sheets workbook can be explored independently without running the local analysis code.
+The published Tableau dashboards and linked Google Sheets workbook can be explored independently without running the local analysis code.
 
 ### Navigating the Project
 
@@ -391,9 +384,9 @@ The published Tableau dashboard and linked Google Sheets workbook can be explore
 - **notebooks:** Python practice and analytical workflows developed locally.
 - **sql:** SQL scripts used for data cleaning and exploratory analysis.
 - **r:** Statistical analysis and visualization code.
-- **outputs:** Analytical summary tables and exported visualizations.
+- **outputs:** Exported Python and R visualizations in `outputs/charts/` and small R summary tables in `outputs/tables/`. Large cleaned CSV exports are kept locally.
 - **sheets:** Spreadsheet-based market analysis using formulas, pivot tables, and charts. The repository includes an exported Excel workbook and chart images. The original analysis is also available in [Google Sheets](https://docs.google.com/spreadsheets/d/1LTeZ-GVYqrYQ_D5Po2h-DqC42cFs5VMRm8Y553t6OLs/edit?usp=sharing).
-- **tableau:** Final Tableau packaged workbook, with the published dashboard accessible through Tableau Public.
+- **tableau:** Final packaged workbook (`completed_denver_airbnb_dashboard.twbx`), with all three interactive dashboards accessible through Tableau Public.
 - **SQL_EDA_Findings.md:** Supporting documentation of SQL exploratory analysis findings.
 
 ## Project Deliverables
@@ -405,7 +398,7 @@ The project produces the following deliverables:
 - Python notebooks for data preparation and analysis
 - R scripts and statistical visualizations
 - Google Sheets analysis and charts
-- Published Tableau market overview dashboard
+- Published Tableau workbook containing Market Overview, Pricing Explorer, and Guest Activity Explorer dashboards
 - Documentation of findings, methodology, and analytical limitations
 
 Together, these deliverables demonstrate an end-to-end analytics workflow, from raw data exploration through business-focused visualization and reporting. 

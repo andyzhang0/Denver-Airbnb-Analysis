@@ -1,32 +1,53 @@
+# ============================================================
+# Denver Airbnb Market Analysis
+# ============================================================
+
 # macOS system files
 .DS_Store
+.AppleDouble
+.LSOverride
 
 # Python cache and local environments
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 .venv/
 venv/
+env/
 .env
+.env.*
+!.env.example
+
+# Local development files
+.vscode/
+.idea/
+*.swp
+*.swo
 
 # Raw source data and local database
 /data/*.csv
 /data/*.geojson
-/data/*.duckdb
-/data/*.duckdb.wal
+*.duckdb
+*.duckdb.wal
 
-# Large cleaned datasets
-/outputs/cleaned_listings.csv
-/outputs/cleaned_calendar.csv
-/outputs/cleaned_reviews.csv
+# Generated cleaned datasets
+/outputs/tables/cleaned_*.csv
 
-# Tableau intermediate files and archives
+# Tableau development and intermediate files
+/tableau/denver_airbnb_dashboard.twbx
 /tableau/archive/
 /tableau/extracts/
 *.twbr
 *.twbr.*
 *.hyper
 
-# Temporary files
+# Temporary files and backups
 *.tmp
 *.log
+*.bak
+*.backup
+*.temp
+*~
