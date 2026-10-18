@@ -11,13 +11,27 @@ An end-to-end analysis of Denver's Airbnb short-term rental market, examining pr
 - **[SQL Analysis](sql/02_eda_analysis.sql)** — Examine SQL queries used to investigate market patterns.
 - **[Python Analysis](notebooks/02_denver_airbnb_analysis.ipynb)** — Explore Python-based data preparation, validation, and analysis.
 
-### Dashboard Preview
+## Dashboard Preview
 
-<img src="images/denver_airbnb_dashboard.png"
-     alt="Denver Airbnb Market Overview Dashboard"
-     width="850">
+Explore the three interactive dashboards in the [Denver Airbnb Market Analysis on Tableau Public](https://public.tableau.com/views/DenverAirbnbMarketAnalysisInteractiveDashboards/DenverAirbnbMarketOverview).
 
-*Market Overview preview showing nightly prices across bedroom counts, neighborhoods, and host categories. [View the full dashboard on Tableau Public](https://public.tableau.com/views/DenverAirbnbMarketAnalysisInteractiveDashboards/DenverAirbnbMarketOverview).*
+### 1. Market Overview
+
+An overview of comparable Denver Airbnb listings, including median nightly prices, neighborhood comparisons, bedroom counts, and host-scale pricing.
+
+<img src="images/denver_airbnb_market_overview.png" alt="Denver Airbnb Market Overview" width="750">
+
+### 2. Pricing Explorer
+
+Explore nightly price distributions, dynamic neighborhood rankings, listing locations, and neighborhood-level pricing by bedroom count.
+
+<img src="images/denver_airbnb_pricing_explorer.png" alt="Denver Airbnb Pricing Explorer" width="750">
+
+### 3. Guest Activity Explorer
+
+Examine historical review trends, seasonal patterns, and review activity across neighborhoods, host scales, and property categories. Review counts are used as a proxy for guest activity, not confirmed bookings or occupancy.
+
+<img src="images/denver_airbnb_guest_activity_explorer.png" alt="Denver Airbnb Guest Activity Explorer" width="750">
 
 ### Project at a Glance
 
