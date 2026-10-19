@@ -150,7 +150,7 @@ install.packages(c("dplyr", "ggplot2", "readr"))
 
 Before running the R analysis, ensure that the cleaned listings dataset has been exported to:
 
-`outputs/cleaned_listings.csv`
+`outputs/tables/cleaned_listings.csv`
 
 Run the R script from the repository's root directory:
 
