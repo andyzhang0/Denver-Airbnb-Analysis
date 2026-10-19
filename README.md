@@ -83,6 +83,83 @@ The project uses three datasets covering Airbnb listings, calendar availability,
 | Calendar | 1,802,735 | Date-level availability information for individual listings |
 | Reviews | 354,646 | Guest review records associated with individual listings |
 
+### Source and Download Instructions
+
+**Data provider:** [Inside Airbnb — Get the Data](https://insideairbnb.com/get-the-data/)
+
+The project uses publicly available Airbnb data for Denver, Colorado, provided by Inside Airbnb. The detailed listings dataset contains scrape dates of June 30 and July 2, 2026.
+
+To obtain the source data:
+
+1. Visit the [Inside Airbnb data download page](https://insideairbnb.com/get-the-data/).
+2. Navigate to **Denver, Colorado, United States**.
+3. Download the detailed listings, calendar, and reviews datasets (`listings.csv.gz`, `calendar.csv.gz`, and `reviews.csv.gz`).
+4. Extract the compressed CSV files.
+5. Create a `data/` directory in the repository's root folder and save the files using the following names:
+
+| Source file | Local filename |
+|---|---|
+| `listings.csv.gz` | `detailed_listings.csv` |
+| `calendar.csv.gz` | `detailed_calendar.csv` |
+| `reviews.csv.gz` | `detailed_reviews.csv` |
+
+### Data Availability and Reproducibility
+
+Raw datasets, generated cleaned datasets, and the local DuckDB database are excluded from the GitHub repository because of their size. The SQL scripts, Python notebooks, R analysis, spreadsheet outputs, and Tableau workbook are provided to document the analytical workflow.
+
+Inside Airbnb periodically updates its datasets. Consequently, the latest available Denver files may differ from the data used in this project. Reproducing the exact published results requires the original dataset snapshot and the same cleaning and analysis procedures.
+
+### Python Environment and Data Preparation
+
+The project uses Python and DuckDB to load the source datasets, apply SQL cleaning transformations, and prepare analytical datasets.
+
+To set up the Python environment, run the following commands from the repository's root directory:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+```
+
+After downloading and extracting the three Inside Airbnb CSV files into `data/`, run the data preparation workflow in `notebooks/02_denver_airbnb_analysis.ipynb`.
+
+The workflow:
+
+1. Connects to DuckDB.
+2. Registers the original listings, calendar, and reviews CSV files as `raw_listings`, `raw_calendar`, and `raw_reviews` views.
+3. Executes `sql/01_cleaning.sql` to create the corresponding cleaned views.
+4. Makes the cleaned datasets available for subsequent analysis.
+
+**Important:** The raw CSV files must remain in the expected `data/` directory because the DuckDB views reference those files.
+
+### R Analysis Setup
+
+The R analysis uses the cleaned listings dataset generated during the Python and DuckDB data preparation workflow.
+
+The R script requires the following packages:
+
+- `dplyr`
+- `ggplot2`
+- `readr`
+
+Install these packages in R if they are not already available:
+
+```r
+install.packages(c("dplyr", "ggplot2", "readr"))
+```
+
+Before running the R analysis, ensure that the cleaned listings dataset has been exported to:
+
+`outputs/cleaned_listings.csv`
+
+Run the R script from the repository's root directory:
+
+```bash
+Rscript r/01_denver_airbnb_analysis.R
+```
+
+The R analysis explores listing characteristics, pricing distributions, host categories, and neighborhood-level patterns. Its generated visualizations and summary tables are included in the repository under `outputs/charts/` and `outputs/tables/`.
+
 ### Dataset Relationships
 
 The datasets are connected through the Airbnb listing identifier.

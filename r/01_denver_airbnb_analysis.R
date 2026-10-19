@@ -10,7 +10,7 @@ library(readr)
 # 2. IMPORT DATA
 # ==========================================
 
-listings <- read_csv("outputs/cleaned_listings.csv")
+listings <- read_csv("outputs/tables/cleaned_listings.csv")
 
 # ==========================================
 # 3. INITIAL DATA EXPLORATION
@@ -72,7 +72,7 @@ print(bedroom_summary, width = Inf)
 # 6. Joining Listing and Review Data in R
 # ==========================================
 
-reviews <- read_csv("outputs/cleaned_reviews.csv")
+reviews <- read_csv("outputs/tables/cleaned_reviews.csv")
 
 review_summary <- reviews %>%
     group_by(listing_id) %>%
@@ -115,10 +115,8 @@ bedroom_count_median_prices <- ggplot(
     ) + 
     theme_minimal()
 
-bedroom_count_median_prices
-
 ggsave(
-  filename = "outputs/r_bedroom_count_median_prices.png",
+  filename = "outputs/charts/r_bedroom_count_median_prices.png",
   plot = bedroom_count_median_prices,
   width = 10,
   height = 6,
@@ -147,10 +145,8 @@ amenity_price_scatter_plot <- ggplot(
     ) +
     theme_minimal()
 
-amenity_price_scatter_plot
-
 ggsave(
-  filename = "outputs/r_amenity_count_price_relationship.png",
+  filename = "outputs/charts/r_amenity_count_price_relationship.png",
   plot = amenity_price_scatter_plot,
   width = 10,
   height = 6,
@@ -179,10 +175,8 @@ host_scale_violin_plot <- ggplot(
   ) +
   theme_minimal()
 
-host_scale_violin_plot
-
 ggsave(
-  filename = "outputs/r_host_scale_price_distribution.png",
+  filename = "outputs/charts/r_host_scale_price_distribution.png",
   plot = host_scale_violin_plot,
   width = 10,
   height = 6,
@@ -211,10 +205,8 @@ bedroom_price_distribution <- ggplot(
   ) +
   theme_minimal()
 
-bedroom_price_distribution
-
 ggsave(
-  filename = "outputs/r_bedroom_count_price_distributions.png",
+  filename = "outputs/charts/r_bedroom_count_price_distributions.png",
   plot = bedroom_price_distribution,
   width = 10,
   height = 6,
@@ -268,11 +260,9 @@ neighborhood_plot <- ggplot(
   ) +
   theme_minimal()
 
-neighborhood_plot
-
 # Saving Neighborhood Price Ranges Plot
 ggsave(
-  filename = "outputs/r_neighborhood_price_ranges.png",
+  filename = "outputs/charts/r_neighborhood_price_ranges.png",
   plot = neighborhood_plot,
   width = 10,
   height = 6,
@@ -282,19 +272,19 @@ ggsave(
 # Exporting bedroom_summary and neighborhood_summary as a csv
 write_csv(
   bedroom_summary,
-  "outputs/r_bedroom_summary.csv"
+  "outputs/tables/r_bedroom_summary.csv"
 )
 
 write_csv(
   neighborhood_summary,
-  "outputs/r_neighborhood_summary.csv"
+  "outputs/tables/r_neighborhood_summary.csv"
 )
 
 # Verify Exported Files
 files <- c(
-  "outputs/r_neighborhood_price_ranges.png",
-  "outputs/r_bedroom_summary.csv",
-  "outputs/r_neighborhood_summary.csv"
+  "outputs/charts/r_neighborhood_price_ranges.png",
+  "outputs/tables/r_bedroom_summary.csv",
+  "outputs/tables/r_neighborhood_summary.csv"
 )
 
 file.exists(files)
@@ -323,15 +313,15 @@ host_review_summary <- listings_reviews %>%
 # Export both summaries
 write_csv(
   host_summary,
-  "outputs/r_host_summary.csv"
+  "outputs/tables/r_host_summary.csv"
 )
 
 write_csv(
   host_review_summary,
-  "outputs/r_host_review_summary.csv"
+  "outputs/tables/r_host_review_summary.csv"
 )
 
 file.exists(c(
-  "outputs/r_host_summary.csv",
-  "outputs/r_host_review_summary.csv"
+  "outputs/tables/r_host_summary.csv",
+  "outputs/tables/r_host_review_summary.csv"
 ))
